@@ -44,7 +44,9 @@ The following macros can be used to override target-level modes on a per-transla
 The library makes a distinction between the failure logging callback and the failure handler.
 
 The logging callback has the following signature:
+
 `void LoggingCallback(const char* file, uint32_t line, const char* format, va_list args)`
+
 It is responsible for formatting the assertion failure message and sending it to the appropriate logging mechanism. The callback can be set by calling `Gris::Assert::SetLoggingCallback`.
 
 Library provides the following callbacks:
@@ -53,7 +55,9 @@ Library provides the following callbacks:
 - NullLoggigCallback - does not log anything.
 
 The failure handler has the following signature:
+
 `void FailureCallback()`
+
 It is responsible for taking the appropriate action when the assert fails. The handler can be set by calling `Gris::Assert::SetFailureHandler`.
 
 Library provides the following handlers:
