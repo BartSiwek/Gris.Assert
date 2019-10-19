@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.14.0)
 
-enable_testing()
+include(FetchContent)
+
+FetchContent_Declare(
+  Extern.Catch2
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG        v2.10.0
+)
+
+FetchContent_MakeAvailable(Extern.Catch2)
 
 add_executable(Gris.Assert.Tests)
 
@@ -16,7 +24,7 @@ target_sources(Gris.Assert.Tests PRIVATE
   "test_no_always_no_fast_no_slow.cpp"
 )
 
-target_link_libraries(Gris.Assert.Tests Gris.Assert ${CONAN_LIBS})
+target_link_libraries(Gris.Assert.Tests Gris.Assert Catch2)
 
 add_test(NAME Gris.Assert.Tests COMMAND $<TARGET_FILE:Gris.Assert.Tests>)
 
