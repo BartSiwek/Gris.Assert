@@ -32,6 +32,10 @@ void StderrLoggigCallback(const char* file, uint32_t line, const char* format, v
 void NullLoggigCallback(const char* file, uint32_t line, const char* format, va_list args)
 {
   // NO-OP
+  (void)file;
+  (void)line;
+  (void)format;
+  (void)args;
 }
 
 //----------------------------------------------------------------------

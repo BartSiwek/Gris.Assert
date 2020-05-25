@@ -11,32 +11,32 @@ namespace
 
 void assert_true_always()
 {
-    GRIS_ALAWYS_ASSERT(1 == 1, "One is equal to one");
+    GRIS_ALAWYS_ASSERT(true, "True");
 }
 
 void assert_false_always()
 {
-    GRIS_ALAWYS_ASSERT(1 == 2, "One is not equal to two");
+    GRIS_ALAWYS_ASSERT(false, "False");
 }
 
 void assert_true_fast()
 {
-    GRIS_FAST_ASSERT(1 == 1, "One is equal to one");
+    GRIS_FAST_ASSERT(true, "True");
 }
 
 void assert_false_fast()
 {
-    GRIS_FAST_ASSERT(1 == 2, "One is not equal to two");
+    GRIS_FAST_ASSERT(false, "False");
 }
 
 void assert_true_slow()
 {
-    GRIS_SLOW_ASSERT(1 == 1, "One is equal to one");
+    GRIS_SLOW_ASSERT(true, "True");
 }
 
 void assert_false_slow()
 {
-    GRIS_SLOW_ASSERT(1 == 2, "One is not equal to two");
+    GRIS_SLOW_ASSERT(false, "False");
 }
 
 }  // namespace <anonymous>

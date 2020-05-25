@@ -1,14 +1,16 @@
-cmake_minimum_required(VERSION 3.14.0)
-
 include(FetchContent)
 
 FetchContent_Declare(
-  Extern.Catch2
+  extern.catch2
   GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-  GIT_TAG        v2.10.0
+  GIT_TAG        v2.10.2
 )
 
-FetchContent_MakeAvailable(Extern.Catch2)
+FetchContent_MakeAvailable(extern.catch2)
+
+include(${extern.catch2_SOURCE_DIR}/contrib/Catch.cmake)
+
+########################################################################
 
 add_executable(Gris.Assert.Tests)
 
@@ -24,14 +26,24 @@ target_sources(Gris.Assert.Tests PRIVATE
   "test_no_always_no_fast_no_slow.cpp"
 )
 
-target_link_libraries(Gris.Assert.Tests Gris.Assert Catch2)
+target_link_libraries(Gris.Assert.Tests PRIVATE
+  project_warnings
+  project_options
+  Gris.Assert
+  Catch2
+)
 
-add_test(NAME Gris.Assert.Tests COMMAND $<TARGET_FILE:Gris.Assert.Tests>)
+catch_discover_tests(
+  Gris.Assert.Tests
+  TEST_PREFIX
+  "[Gris.Assert.Tests]"
+  EXTRA_ARGS
+  -s
+  --reporter=xml
+  --out=Gris.Assert.Tests.xml
+)
 
 ###############################################################################
-
-include(test_compile_fail)
-include(test_compile_success)
 
 # Test target level assertion settings
 test_compile_success(test_assert_defaults_tu_defaults "compilation/assert_tu_defaults.cpp" "Gris.Assert" "EXPECT_HEADER=\"expect_always.h\"")
