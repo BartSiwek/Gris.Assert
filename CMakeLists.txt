@@ -18,11 +18,11 @@ endif()
 
 setup_standard_project_settings()
 
-add_library(project_options INTERFACE)
-target_compile_features(project_options INTERFACE cxx_std_11)
+add_library(Gris.Assert.ProjectOptions INTERFACE)
+target_compile_features(Gris.Assert.ProjectOptions INTERFACE cxx_std_11)
 
-add_library(project_warnings INTERFACE)
-set_project_warnings(project_warnings)
+add_library(Gris.Assert.ProjectWarnings INTERFACE)
+set_project_warnings(Gris.Assert.ProjectWarnings)
 
 add_library(Gris.Assert)
 
@@ -36,8 +36,8 @@ target_include_directories(Gris.Assert PUBLIC
 )
 
 target_link_libraries(Gris.Assert PRIVATE
-  project_warnings
-  project_options
+  Gris.Assert.ProjectOptions
+  Gris.Assert.ProjectWarnings
 )
 
 ########################################################################

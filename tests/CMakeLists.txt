@@ -27,8 +27,8 @@ target_sources(Gris.Assert.Tests PRIVATE
 )
 
 target_link_libraries(Gris.Assert.Tests PRIVATE
-  project_warnings
-  project_options
+  Gris.Assert.ProjectOptions
+  Gris.Assert.ProjectWarnings
   Gris.Assert
   Catch2
 )
