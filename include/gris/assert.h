@@ -90,7 +90,7 @@ void AssertFired(const char* file, uint32_t line, const char* format, ...);
 #define GRIS_ASSERT_IMPL(condition, format, ...)                                                                         \
   do                                                                                                                     \
   {                                                                                                                      \
-    if(!(condition))                                                                                                        \
+    if(!static_cast<bool>(condition))                                                                                                        \
     {                                                                                                                    \
       Gris::Assert::Detail::AssertFired(__FILE__, __LINE__, "Assertion [" #condition "] failed. " format, __VA_ARGS__);  \
       GRIS_DEBUGBREAK();                                                                                                 \
